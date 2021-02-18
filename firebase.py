@@ -1,5 +1,5 @@
 from firebaseconfig import firebaseConfig 
-from Markov import game
+from Markov import registergame, logingame
 
 
 auth = firebase.auth()
@@ -29,7 +29,7 @@ def login():
     useremail = firebase.auth().currentUser.email
     lst = db.child(useremail).child("lst").get().val()
     botlst = db.child(useremail).child("botlst").get().val()
-    lst11, botlst1 = logingame(lst,botlst)
+    lst1, botlst1 = logingame(lst,botlst)
     db.child(useremail).child("lst").update(lst1)          #can be used to update data 
     db.child(useremail).child("botlst").update(botlst1)
 
