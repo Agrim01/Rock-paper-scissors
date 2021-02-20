@@ -1,5 +1,6 @@
 import random as r
 import numpy as n
+import json
 
 intro = """
 Welcome to Rock Paper Scissors game!
@@ -454,7 +455,7 @@ def registergame():
                 if total_untied >= 30:
                     accuracy_30 = (float(bot_score_30)/30)*100
                     print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
-
+    
     return lst, botlst
 
 def logingame(lst, botlst):
