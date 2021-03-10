@@ -1,6 +1,5 @@
 import random as r
 import numpy as n
-import json
 
 intro = """
 Welcome to Rock Paper Scissors game!
@@ -17,14 +16,6 @@ patterns = [
     [1, 2 ,2, 1, 2, 2],
     [0, 1, 0, 0, 1, 0],
     [0, 0, 1, 0, 0, 1]
-    # [0, 0, 0],
-    # [1, 1, 1],
-    # [2, 2, 2, 2, 2, 2],
-
-    # [1, 1, 1, 1, 1, 1],
-    # [2, 1, 2, 2, 1, 2],
-    # [2, 2, 1, 2, 2, 1]
-
 ]
 
 a = 0
@@ -52,7 +43,7 @@ def registergame():
     
 
     i = 0
-    while i in range(0, 20):
+    while i in range(0, 1):
         try:
             user_move = int(input("Choose 0|1|2 \n"))
         except:
@@ -156,7 +147,7 @@ def registergame():
     occurrence222=0
     
            
-    while i in range(20, 100):
+    while i in range(1, 100):
 
         for j in range(len(lst)-1):
             if lst[j]==0 and botlst[j]==0:
@@ -455,14 +446,15 @@ def registergame():
                 if total_untied >= 30:
                     accuracy_30 = (float(bot_score_30)/30)*100
                     print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
-    
+
     return lst, botlst
+# registergame()
 
 def logingame(lst, botlst):
 
     bot_score = 0
     user_score = 0
-
+    bot_move =0
     i = len(lst)
 
     for b in range(len(lst)):
@@ -635,7 +627,7 @@ def logingame(lst, botlst):
         p222 = float(occurrence222)/occurrence22
 
         j = len(lst)-1
-
+        
         if lst[j]==0 and botlst[j]==0:
             x = max(p000,p001,p002)
             if x==p000:

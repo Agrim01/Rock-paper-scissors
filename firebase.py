@@ -13,22 +13,21 @@ def login():
     password = getpass.getpass("Please Enter Your Password : \n")
     login = auth.sign_in_with_email_and_password(email, password)
     print("You are logged in!")
-    lst1 = []
-    botlst1 = [] 
+    lst = []
+    botlst = [] 
     useremail = email.split("@")[0]
     json_lst = db.child(useremail).child("lst").get().val()
     json_botlst = db.child(useremail).child("botlst").get().val()
     lst = list(json_lst.split(" ")) 
     botlst = list(json_botlst.split(" ")) 
     lst1, botlst1 = logingame(lst,botlst)
-
+    
     json_lst1 = ' '.join([str(elem) for elem in lst1]) 
     json_botlst1 = ' '.join([str(elem) for elem in botlst1]) 
     
-    json_lst += json_lst1
-    json_botlst += json_lst1
-    db.child(useremail).child("lst").update(json_lst)                        #can be used to update data 
-    db.child(useremail).child("botlst").update(json_botlst)
+    db.child(useremail).update({"lst": json_lst1, "botlst": json_botlst1})
+    
+    print("THANKS FOR PLAYING!")
 
     
 def register():
