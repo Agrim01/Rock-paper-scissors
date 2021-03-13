@@ -16,6 +16,14 @@ patterns = [
     [1, 2 ,2, 1, 2, 2],
     [0, 1, 0, 0, 1, 0],
     [0, 0, 1, 0, 0, 1]
+    # [0, 0, 0],
+    # [1, 1, 1],
+    # [2, 2, 2, 2, 2, 2],
+
+    # [1, 1, 1, 1, 1, 1],
+    # [2, 1, 2, 2, 1, 2],
+    # [2, 2, 1, 2, 2, 1]
+
 ]
 
 a = 0
@@ -147,7 +155,7 @@ def registergame():
     occurrence222=0
     
            
-    while i in range(1, 100):
+    while i in range(1, 200):
 
         for j in range(len(lst)-1):
             if lst[j]==0 and botlst[j]==0:
@@ -417,44 +425,46 @@ def registergame():
     elif total_untied > 0:
         if bot_score > user_score:
             print("Bot is Winner!!")
-            accuracy = (float(bot_score)/total_untied)*100
+            accuracy = (float(i-user_score)/i)*100
             print("Overall bot's accuracy was: " + str(accuracy) + "%")
 
-            if total_untied >= 20:
-                accuracy_20 = (float(bot_score_20)/20)*100
-                print("Bot's accuracy when total untied matches were 20 was: " + str(accuracy_20) + "%")
-                if total_untied >= 30:
-                    accuracy_30 = (float(bot_score_30)/30)*100
-                    print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
+#             if total_untied >= 20:
+#                 accuracy_20 = (float(bot_score_20)/20)*100
+#                 print("Bot's accuracy when total untied matches were 20 was: " + str(accuracy_20) + "%")
+#                 if total_untied >= 30:
+#                     accuracy_30 = (float(bot_score_30)/30)*100
+#                     print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
         elif bot_score < user_score:
             print("You are Winner!!")
-            accuracy = (float(bot_score)/total_untied)*100
+            accuracy = (float(i-user_score)/i)*100
             print("Overall bot's accuracy was: " + str(accuracy) + "%")
 
-            if total_untied >= 20:
-                accuracy_20 = (float(bot_score_20)/20)*100
-                print("Bot's accuracy when total untied matches were 20 was: " + str(accuracy_20) + "%")
-                if total_untied >= 30:
-                    accuracy_30 = (float(bot_score_30)/30)*100
-                    print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
+#             if total_untied >= 20:
+#                 accuracy_20 = (float(bot_score_20)/20)*100
+#                 print("Bot's accuracy when total untied matches were 20 was: " + str(accuracy_20) + "%")
+#                 if total_untied >= 30:
+#                     accuracy_30 = (float(bot_score_30)/30)*100
+#                     print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
         else:
             print("Match Tied!!")
             print("Overall bot's accuracy was 50%")
-            if total_untied >= 20:
-                accuracy_20 = (float(bot_score_20)/20)*100
-                print("Bot's accuracy when total untied matches were 20 was: " + str(accuracy_20) + "%")
-                if total_untied >= 30:
-                    accuracy_30 = (float(bot_score_30)/30)*100
-                    print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
+#             if total_untied >= 20:
+#                 accuracy_20 = (float(bot_score_20)/20)*100
+#                 print("Bot's accuracy when total untied matches were 20 was: " + str(accuracy_20) + "%")
+#                 if total_untied >= 30:
+#                     accuracy_30 = (float(bot_score_30)/30)*100
+#                     print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
 
-    return lst, botlst
-# registergame()
+    return lst, botlst, user_score, total_untied
 
-def logingame(lst, botlst):
+def logingame(lst, botlst, user_score, total_untied):
 
+    userscore = user_score
+    totaluntied = total_untied
     bot_score = 0
     user_score = 0
-    bot_move =0
+    bot_move = 0
+
     i = len(lst)
 
     for b in range(len(lst)):
@@ -473,13 +483,13 @@ def logingame(lst, botlst):
             elif lst[b] == 2 and botlst[b] == 1:
                 user_score += 1
 
-            if user_score + bot_score == 20:
-                user_score_20 = user_score
-                bot_score_20 = bot_score
+            # if user_score + bot_score == 20:
+            #     user_score_20 = user_score
+            #     bot_score_20 = bot_score
 
-            if user_score + bot_score == 30:
-                user_score_30 = user_score
-                bot_score_30 = bot_score
+            # if user_score + bot_score == 30:
+            #     user_score_30 = user_score
+            #     bot_score_30 = bot_score
 
     occurrence00=1
     occurrence01=1
@@ -520,7 +530,7 @@ def logingame(lst, botlst):
     occurrence222=0
     
            
-    while i in range(len(lst), 100):
+    while i in range(len(lst), 200):
 
         for j in range(len(lst)-1):
             if lst[j]==0 and botlst[j]==0:
@@ -627,7 +637,7 @@ def logingame(lst, botlst):
         p222 = float(occurrence222)/occurrence22
 
         j = len(lst)-1
-        
+
         if lst[j]==0 and botlst[j]==0:
             x = max(p000,p001,p002)
             if x==p000:
@@ -768,18 +778,19 @@ def logingame(lst, botlst):
 
             i += 1
 
-            if user_score + bot_score == 20:
-                user_score_20 = user_score
-                bot_score_20 = bot_score
+            # if user_score + bot_score == 20:
+            #     user_score_20 = user_score
+            #     bot_score_20 = bot_score
 
-            if user_score + bot_score == 30:
-                user_score_30 = user_score
-                bot_score_30 = bot_score
+            # if user_score + bot_score == 30:
+            #     user_score_30 = user_score
+            #     bot_score_30 = bot_score
 
+
+    total_untied = totaluntied + user_score + bot_score
+    user_score = userscore + user_score
     print("Your Score : " + str(user_score))
-    print("Total untied matches : " + str(user_score + bot_score) )
-
-    total_untied = user_score + bot_score
+    print("Total untied matches : " + str(total_untied) )
 
     print("Total matches: " + str(i))
 
@@ -790,34 +801,34 @@ def logingame(lst, botlst):
     elif total_untied > 0:
         if bot_score > user_score:
             print("Bot is Winner!!")
-            accuracy = (float(bot_score)/total_untied)*100
+            accuracy = 100-((float(user_score)/i)*100)
             print("Overall bot's accuracy was: " + str(accuracy) + "%")
 
-            if total_untied >= 20:
-                accuracy_20 = (float(bot_score_20)/20)*100
-                print("Bot's accuracy when total untied matches were 20 was: " + str(accuracy_20) + "%")
-                if total_untied >= 30:
-                    accuracy_30 = (float(bot_score_30)/30)*100
-                    print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
+#             if total_untied >= 20:
+#                 accuracy_20 = (float(bot_score_20)/20)*100
+#                 print("Bot's accuracy when total untied matches were 20 was: " + str(accuracy_20) + "%")
+#                 if total_untied >= 30:
+#                     accuracy_30 = (float(bot_score_30)/30)*100
+#                     print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
         elif bot_score < user_score:
             print("You are Winner!!")
-            accuracy = (float(bot_score)/total_untied)*100
+            accuracy = 100-((float(user_score)/i)*100)
             print("Overall bot's accuracy was: " + str(accuracy) + "%")
 
-            if total_untied >= 20:
-                accuracy_20 = (float(bot_score_20)/20)*100
-                print("Bot's accuracy when total untied matches were 20 was: " + str(accuracy_20) + "%")
-                if total_untied >= 30:
-                    accuracy_30 = (float(bot_score_30)/30)*100
-                    print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
+#             if total_untied >= 20:
+#                 accuracy_20 = (float(bot_score_20)/20)*100
+#                 print("Bot's accuracy when total untied matches were 20 was: " + str(accuracy_20) + "%")
+#                 if total_untied >= 30:
+#                     accuracy_30 = (float(bot_score_30)/30)*100
+#                     print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
         else:
             print("Match Tied!!")
             print("Overall bot's accuracy was 50%")
-            if total_untied >= 20:
-                accuracy_20 = (float(bot_score_20)/20)*100
-                print("Bot's accuracy when total untied matches were 20 was: " + str(accuracy_20) + "%")
-                if total_untied >= 30:
-                    accuracy_30 = (float(bot_score_30)/30)*100
-                    print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
+#             if total_untied >= 20:
+#                 accuracy_20 = (float(bot_score_20)/20)*100
+#                 print("Bot's accuracy when total untied matches were 20 was: " + str(accuracy_20) + "%")
+#                 if total_untied >= 30:
+#                     accuracy_30 = (float(bot_score_30)/30)*100
+#                     print("Bot's accuracy when total untied matches were 30 was: " + str(accuracy_30) + "%")
 
-    return lst, botlst
+    return lst, botlst, user_score, total_untied
