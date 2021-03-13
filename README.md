@@ -3,7 +3,7 @@ A Ml+ Rl based Bot
 
 # For local setup
 Clone the repository-
- ```git clone https://github.com/akanksha-v/Rock-paper-scissors.git```
+ ```git clone https://github.com/Agrim01/Rock-paper-scissors.git```
 
  Move inside the folder-
  ```cd Rock-paper-scissors``` 
